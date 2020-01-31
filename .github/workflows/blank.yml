@@ -10,7 +10,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y jq
-      - run: echo '[1,2,3]' | jq
+      - run: echo '[1,2,3]' | jq '.'
   build:
     runs-on: ubuntu-latest
     strategy:
