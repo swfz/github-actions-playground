@@ -14,6 +14,7 @@ jobs:
           file: hoge.yml
           version_name: zsh_version
           repo: zsh-users/zsh
-      - run: |
-        cat hoge.yml
+      - name: cat
+        run: |
+          cat hoge.yml
 
