@@ -1,2 +1,3 @@
 yaml:
   zsh_version: 5.7.1
+  tmux_v: 2.1
