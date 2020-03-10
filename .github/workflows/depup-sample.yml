@@ -8,20 +8,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - uses: haya14busa/action-depup@v1
-        id: depup
+        id: zsh
         with:
           file: hoge.yml
           version_name: zsh_version
           repo: zsh-users/zsh
         if: always()
+
       - uses: haya14busa/action-depup@v1
-        id: depup
+        id: tmux
         with:
           file: hoge.yml
           version_name: tmux_v
           repo: tmux/tmux
         if: always()
+
       - name: cat
         run: |
           cat hoge.yml
