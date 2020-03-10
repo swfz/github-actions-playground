@@ -1,0 +1,19 @@
+name: depup
+
+on:
+  push:
+
+jobs:
+  versionup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: haya14busa/action-depup@v1
+        id: depup
+        with:
+          file: hoge.yml
+          version_name: zsh_version
+          repo: zsh-users/zsh
+      - run: |
+        cat hoge.yml
+
