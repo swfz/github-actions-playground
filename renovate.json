@@ -4,11 +4,11 @@
     "config:base"
   ],
   "labels": ["renovate"],
-  regexManagers: [
+  "regexManagers": [
     {
-      fileMatch: ['^\\.github/workflows/[^/]+\\.ya?ml$'],
-      matchStrings: ['uses: (?<depName>.*?)@(?<currentValue>.*?)\\s'],
-      datasourceTemplate: 'github-tags',
+      "fileMatch": ["^\\.github/workflows/[^/]+\\.ya?ml$"],
+      "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\\s"],
+      "datasourceTemplate": "github-tags"
     }
   ]
 }
