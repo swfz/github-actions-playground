@@ -9,12 +9,12 @@
   "regexManagers": [
     {
       "fileMatch": ["^\\.github/workflows/[^/]+\\.ya?ml$"],
-      "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)$"],
+      "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\n"],
       "datasourceTemplate": "github-tags"
     },
     {
       "fileMatch": ["sample.yml"],
-      "matchStrings": ["version: (?<depName>.*?)@(?<currentValue>.*?)$"],
+      "matchStrings": ["version: (?<depName>.*?)@(?<currentValue>.*?)\n"],
       "datasourceTemplate": "github-tags"
     }
   ]
