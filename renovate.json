@@ -1,9 +1,11 @@
 {
-  "enabled": true,
   "extends": [
     "config:base"
   ],
   "labels": ["renovate"],
+  "regex": {
+    "fileMatch": ["\\.yml$"]
+  },
   "regexManagers": [
     {
       "fileMatch": ["^\\.github/workflows/[^/]+\\.ya?ml$"],
