@@ -7,7 +7,12 @@
   "regexManagers": [
     {
       "fileMatch": ["^\\.github/workflows/[^/]+\\.ya?ml$"],
-      "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\\s"],
+      "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)$"],
+      "datasourceTemplate": "github-tags"
+    },
+    {
+      "fileMatch": ["sample.yml"],
+      "matchStrings": ["version: (?<depName>.*?)@(?<currentValue>.*?)$"],
       "datasourceTemplate": "github-tags"
     }
   ]
