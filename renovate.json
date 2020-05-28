@@ -3,5 +3,12 @@
   "extends": [
     "config:base"
   ],
-  "labels": ["renovate"]
+  "labels": ["renovate"],
+  regexManagers: [
+    {
+      fileMatch: ['^\\.github/workflows/[^/]+\\.ya?ml$'],
+      matchStrings: ['uses: (?<depName>.*?)@(?<currentValue>.*?)\\s'],
+      datasourceTemplate: 'github-tags',
+    }
+  ]
 }
