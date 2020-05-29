@@ -9,7 +9,7 @@
   "regexManagers": [
     {
       "fileMatch": [".github/workflows/blank.yml","hoge.yml"],
-      "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\n"],
+      "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)$"],
       "datasourceTemplate": "github-tags"
     },
     {
