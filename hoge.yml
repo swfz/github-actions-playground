@@ -1,0 +1,31 @@
+name: CI
+
+on: [push, repository_dispatch, pull_request]
+
+jobs:
+  jq:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install jq
+        run: |
+          sudo apt update
+          sudo apt install -y jq
+      - run: echo '[1,2,3]' | jq '.'
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        role:
+          - name: hoge
+            repo: 'ho/ge'
+          - name: fuga
+            repo: 'fu/ga'
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run a one-line script
+        run: echo Hello, world! build ${{ matrix.role.name }}
+      - name: touch
+        run: touch ${{ matrix.role.name }}.txt
+      - name: write
+        run: echo ${{ matrix.role.repo }} >> ${{ matrix.role.name }}.txt
+

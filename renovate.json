@@ -8,7 +8,7 @@
   },
   "regexManagers": [
     {
-      "fileMatch": [".github/workflows/blank.yml"],
+      "fileMatch": [".github/workflows/blank.yml","hoge.yml"],
       "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\n"],
       "datasourceTemplate": "github-tags"
     },
