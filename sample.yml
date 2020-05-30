@@ -1,4 +1,4 @@
 bat:
   version: sharkdp/bat@0.10.0
 terraform:
-  version: hashicorp/terraform@0.12.24
+  version: hashicorp/terraform@0.11.0
