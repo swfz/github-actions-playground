@@ -3,9 +3,6 @@
     "config:base"
   ],
   "labels": ["renovate"],
-  "regex": {
-    "fileMatch": ["\\.yml$"]
-  },
   "regexManagers": [
     {
       "fileMatch": ["hoge.yml"],
