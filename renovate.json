@@ -5,7 +5,7 @@
   "labels": ["renovate"],
   "regexManagers": [
     {
-      "fileMatch": ["hoge.yml",".github/workflows/blank.yml"],
+      "fileMatch": [".github/workflows/blank.yml"],
       "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\n"],
       "datasourceTemplate": "github-tags"
     },
