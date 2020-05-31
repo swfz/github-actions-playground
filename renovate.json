@@ -6,7 +6,7 @@
   "regexManagers": [
     {
       "fileMatch": ["hoge.yml",".github/workflows/blank.yml"],
-      "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)$"],
+      "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\n"],
       "datasourceTemplate": "github-tags"
     },
     {
