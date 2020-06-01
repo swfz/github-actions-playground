@@ -10,6 +10,10 @@ module.exports = {
       'swfz/github-actions-playground'
     ],
   packageRules: [
+    {
+      managers: ["github-actions"],
+      enabled: true
+    },
       {
             description: 'lockFileMaintenance',
             updateTypes: [
