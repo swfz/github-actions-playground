@@ -3,12 +3,10 @@
     "config:base"
   ],
   "labels": ["renovate"],
+  "github-actions": {
+    "fileMatch": ["^\.github/workflows/[^/]+\.ya?ml$"]
+  },
   "regexManagers": [
-    {
-      "fileMatch": [".github/workflows/blank.yml"],
-      "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\n"],
-      "datasourceTemplate": "github-tags"
-    },
     {
       "fileMatch": ["sample.yml"],
       "matchStrings": ["version: (?<depName>.*?)@(?<currentValue>.*?)\n"],
