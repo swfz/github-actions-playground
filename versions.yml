@@ -1,16 +1,13 @@
 # dummy
 direnv_version: v2.20.0
 
-# datasource=github-releases depName=docker/compose
-docker_compose_version: 1.25.5
-
 # datasource=github-releases depName=docker/docker-ce
 docker_version: 19.03.8
 
 # datasource=github-releases depName=embulk/embulk
 embulk_version: 0.10.2
 
-# dummy
+# datasource=github-tags depName=git/git
 git_version: 2.26.2
 
 # dummy
@@ -25,11 +22,11 @@ q_version: 1.7.1-1
 # dummy
 terraform_version: 0.12.25
 
-# dummy
+# datasource=github-tags depName=tmux/tmux
 tmux_version: 3.1a
 
-# dummy
+# datasource=github-tags depName=vim/vim
 vim_version: 8.2.0764
 
-# dummy
+# datasource=github-tags depName=zsh-users/zsh
 zsh_version: 5.8
