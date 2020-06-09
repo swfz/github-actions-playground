@@ -74,9 +74,6 @@ jobs:
         run: echo ${{ toJSON(steps) }}
 
   piyo:
-    # if: '!github.head_ref || (github.head_ref && startsWith(github.head_ref, "versionup"))'
-    # if: '!github.head_ref'
-    # if: startsWith(github.head_ref, 'versionup')
     if: "github.event_name != 'pull_request' || !startsWith(github.head_ref, 'versionup')"
     runs-on: ubuntu-latest
     steps:
