@@ -20,7 +20,7 @@
       "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
     },
     {
-      "fileMatch": [".github/workflows/blank.yml"],
+      "fileMatch": [".github/workflows/blank.yml",".github/workflows/takeover-output.yml"],
       "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\n"],
       "datasourceTemplate": "github-releases",
       "versioningTemplate": "regex"
