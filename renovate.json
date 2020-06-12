@@ -22,7 +22,8 @@
     {
       "fileMatch": [".github/workflows/blank.yml"],
       "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\n"],
-      "datasourceTemplate": "github-releases"
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "regex"
     }
   ],
   "packageRules": [
