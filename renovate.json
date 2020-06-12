@@ -23,12 +23,12 @@
       "fileMatch": [".github/workflows/blank.yml"],
       "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\n"],
       "datasourceTemplate": "github-releases"
-    },
+    }
   ],
   "packageRules": [
     {
-      "datasources": ["regex"]
-      "versioning": "regex:^(?<major>v\d+)(\.(?<minor>\d+))?(\.(?<patch>\d+))?$"
+      "datasources": ["regex"],
+      "versioning": "regex:^(?<major>v\\d+)(\\.(?<minor>\\d+))?(\\.(?<patch>\\d+))?"
     }
   ]
 }
