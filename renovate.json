@@ -24,5 +24,11 @@
       "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\n"],
       "datasourceTemplate": "github-releases"
     }
+  ],
+  "packageRules": [
+    {
+      "packageNames": ["actions/checkout"],
+      "versioning": "regex:^v(?<major>\\d+)(\\.(?<minor>\\d+))?(\\.(?<patch>\\d+))?"
+    }
   ]
 }
