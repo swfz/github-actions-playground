@@ -22,8 +22,7 @@
     {
       "fileMatch": [".github/workflows/blank.yml",".github/workflows/takeover-output.yml"],
       "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\n"],
-      "datasourceTemplate": "github-releases",
-      "versioningTemplate": "regex"
+      "datasourceTemplate": "github-releases"
     }
   ],
   "packageRules": [
