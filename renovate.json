@@ -27,7 +27,7 @@
   ],
   "packageRules": [
     {
-      "datasources": ["regex"],
+      "packageNames": ["actions/checkout"],
       "versioning": "regex:^(?<major>v\\d+)(\\.(?<minor>\\d+))?(\\.(?<patch>\\d+))?"
     }
   ]
