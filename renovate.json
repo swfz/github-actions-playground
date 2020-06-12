@@ -18,6 +18,17 @@
         "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\n.*?_version: (?<currentValue>.*)\n"
       ],
       "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
+    },
+    {
+      "fileMatch": [".github/workflows/blank.yml"],
+      "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\n"],
+      "datasourceTemplate": "github-releases"
+    },
+  ],
+  "packageRules": [
+    {
+      "datasources": ["regex"]
+      "versioning": "regex:^(?<major>v\d+)(\.(?<minor>\d+))?(\.(?<patch>\d+))?$"
     }
   ]
 }
