@@ -13,14 +13,14 @@ jobs:
   printInputs:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-        echo "Log level: ${{ github.event.inputs.date }}"
-        echo "Tags: ${{ github.event.inputs.tags }}"
+    - run: |
+      echo "Log level: ${{ github.event.inputs.date }}"
+      echo "Tags: ${{ github.event.inputs.tags }}"
 
   printDate:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          start_date=$(date -d "1 day ago" +"%Y-%m-01")
-          echo "start_date: ${{ github.event.inputs.date || $start_date }}"
+    - run: |
+        start_date=$(date -d "1 day ago" +"%Y-%m-01")
+        echo "start_date: ${{ github.event.inputs.date || $start_date }}"
 
