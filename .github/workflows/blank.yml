@@ -21,7 +21,7 @@ jobs:
           - name: fuga
             repo: 'fu/ga'
     steps:
-      - uses: actions/checkout@v1.0.0
+      - uses: actions/checkout@v1.2.0
       - name: Run a one-line script
         run: echo Hello, world! build ${{ matrix.role.name }}
       - name: touch
