@@ -1,16 +1,25 @@
-on: 
+on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'Log level'     
+      date:
+        description: 'date'
         required: true
-        default: 'warning'
+        default: ''
       tags:
-        description: 'Test scenario tags'  
+        description: 'Test scenario tags'
+
 jobs:
   printInputs:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo "Log level: ${{ github.event.inputs.logLevel }}"
-        echo "Tags: ${{ github.event.inputs.tags }}" 
+      - run: |
+        echo "Log level: ${{ github.event.inputs.date }}"
+        echo "Tags: ${{ github.event.inputs.tags }}"
+
+  printDate:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          start_date=$(date -d "1 day ago" +"%Y-%m-01")
+          echo "start_date: ${{ github.event.inputs.date || $start_date }}"
+
