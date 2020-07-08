@@ -1,21 +1,25 @@
+name: Manually triggered workflow
 on:
-  push:
   workflow_dispatch:
     inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
+      home:
+        description: 'location'
+        required: false
       date:
         description: 'date'
-        required: true
-        default: ''
-      tags:
-        description: 'Test scenario tags'
+        required: false
 
 jobs:
-  printInputs:
+  say_hello:
     runs-on: ubuntu-latest
     steps:
     - run: |
-      echo "Log level: ${{ github.event.inputs.date }}"
-      echo "Tags: ${{ github.event.inputs.tags }}"
+        echo "Hello ${{ github.event.inputs.name }}!"
+        echo "- in ${{ github.event.inputs.home }}!"
 
   printDate:
     runs-on: ubuntu-latest
