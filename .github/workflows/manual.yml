@@ -25,7 +25,9 @@ jobs:
   printDate:
     runs-on: ubuntu-latest
     steps:
-    - run: |
+    - if: ${{ github.event.inputs.date }}
+      name:
+      run: |
         start_date=$(date -d "1 day ago" +"%Y-%m-01")
         echo "start_date: ${{ github.event.inputs.date }}"
 
