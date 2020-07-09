@@ -27,5 +27,5 @@ jobs:
     steps:
     - run: |
         start_date=$(date -d "1 day ago" +"%Y-%m-01")
-        echo "start_date: ${{ github.event.inputs.date || $start_date }}"
+        echo "start_date: ${{ github.event.inputs.date }}"
 
