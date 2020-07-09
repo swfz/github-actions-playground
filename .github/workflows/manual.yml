@@ -1,26 +1,12 @@
-name: Manually triggered workflow
+name: Manual Input And Scheduled
 on:
-  push:
+  schedule:
+    - cron: '0 1 * * *'
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Person to greet'
-        required: true
-        default: 'Mona the Octocat'
-      home:
-        description: 'location'
-        required: false
       date:
         description: 'date'
-        required: false
-
-jobs:
-  say_hello:
-    runs-on: ubuntu-latest
-    steps:
-    - run: |
-        echo "Hello ${{ github.event.inputs.name }}!"
-        echo "- in ${{ github.event.inputs.home }}!"
+        required: true
 
   printDate:
     runs-on: ubuntu-latest
