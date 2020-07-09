@@ -8,6 +8,7 @@ on:
         description: 'date'
         required: true
 
+jos:
   printDate:
     runs-on: ubuntu-latest
     steps:
