@@ -8,7 +8,7 @@ on:
         default: 'Mona the Octocat'
       home:
         description: 'location'
-        required: false
+        required: true
 
 jobs:
   say_hello:
