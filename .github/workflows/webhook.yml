@@ -25,7 +25,11 @@ jobs:
           bash slack.sh '#2EB886' ${{ github.workflow }} \
                         ${{ github.actor }} \
                         ${{ github.event_name }} \
-                        ${{ github.action }}
+                        ${{ github.action }} \
+                        ${{ github.run_id }} \
+                        ${{ github.event.repository.url }} \
+                        ${{ github.event.sender.avatar_url }} \
+
       - name: failure
         if: failure()
         env:
@@ -34,4 +38,7 @@ jobs:
           bash slack.sh '#A30100' ${{ github.workflow }} \
                         ${{ github.actor }} \
                         ${{ github.event_name }} \
-                        ${{ github.action }}
+                        ${{ github.action }} \
+                        ${{ github.run_id }} \
+                        ${{ github.event.repository.url }} \
+                        ${{ github.event.sender.avatar_url }} \

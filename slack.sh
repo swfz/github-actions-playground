@@ -21,21 +21,29 @@ echo $workflow
 echo $actor
 echo $event_name
 echo $action
+echo $run_id
+echo $repo_url
+echo $avatar_url
 
 curl -X POST -H 'Content-type: application/json' ${SLACK_WEBHOOK_URL} \
   -d @- <<EOS
 {
     "attachments": [
       {
-        "color": "#36a64f",
+        "color": "${color}",
         "fallback": "Required plain-text summary of the attachment.",
         "blocks": [
           {
             "type": "context",
             "elements": [
               {
+                "type": "image",
+                "image_url": "${avatar_url}",
+                "alt_text": "${actor}"
+              },
+              {
                 "type": "mrkdwn",
-                "text": "Location: *Dogpatch* <https://github.com/swfz|swfz>)"
+                "text": "Event: ${event_name} Workflow(<${repo_url}/actions/runs/${run_id}|$workflow>)"
               }
             ]
           }
