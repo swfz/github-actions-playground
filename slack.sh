@@ -16,6 +16,7 @@ actor=$3
 event_name=$4
 action=$5
 
+echo '----------'
 echo $color
 echo $workflow
 echo $actor
@@ -24,6 +25,7 @@ echo $action
 echo $run_id
 echo $repo_url
 echo $avatar_url
+echo '----------'
 
 curl -X POST -H 'Content-type: application/json' ${SLACK_WEBHOOK_URL} \
   -d @- <<EOS
