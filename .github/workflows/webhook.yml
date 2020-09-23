@@ -29,7 +29,9 @@ jobs:
                         ${{ github.run_id }} \
                         ${{ github.event.repository.url }} \
                         ${{ github.event.sender.avatar_url }} \
-                        ${{ github.repository }}
+                        ${{ github.repository }} \
+                        ${{ github.ref }} \
+                        ${{ github.sha }}
 
       - name: failure
         if: failure()
@@ -43,4 +45,6 @@ jobs:
                         ${{ github.run_id }} \
                         ${{ github.event.repository.url }} \
                         ${{ github.event.sender.avatar_url }} \
-                        ${{ github.repository }}
+                        ${{ github.repository }} \
+                        ${{ github.ref }} \
+                        ${{ github.sha }}
