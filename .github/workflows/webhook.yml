@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo 'hoge'
+      - run: ls ho
 
   incomming_webhook:
     runs-on: ubuntu-latest
