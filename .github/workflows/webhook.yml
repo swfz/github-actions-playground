@@ -7,14 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.2
-      - run: echo "${{ toJSON(github) }}" > event.json
       - run: |
           echo $GITHUB_EVENT_PATH
           cat $GITHUB_EVENT_PATH
       - uses: actions/upload-artifact@v1
         with:
           name: event.json
-          path: event.json
+          path: $GITHUB_EVENT_PATH
 
       - run: ls -al
       - name: success
