@@ -37,15 +37,13 @@ curl -X POST -H 'Content-type: application/json' ${SLACK_WEBHOOK_URL} \
       {
         "color": "${color}",
         "fallback": "Required plain-text summary of the attachment.",
-        "author_name": "${actor}",
-        "author_icon": "${avatar_url}",
         "blocks": [
           {
             "type": "context",
             "elements": [
               {
                 "type": "mrkdwn",
-                "text": "Workflow: <${repo_url}/actions/runs/${run_id}|${workflow}>"
+                "text": "Workflow: <${repo_url}/actions/runs/${run_id} | ${workflow}>"
               }
             ]
           }
