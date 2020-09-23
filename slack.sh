@@ -24,6 +24,8 @@ sha=${11}
 message=${12}
 result=${13}
 
+short=$(echo ${sha:0:7})
+branch=$(echo ${ref} | sed 's/refs\/heads\///g')
 echo '----------'
 echo $color
 echo $workflow
@@ -53,7 +55,7 @@ curl -X POST -H 'Content-type: application/json' ${SLACK_WEBHOOK_URL} \
             "elements": [
               {
                 "type": "mrkdwn",
-                "text": "${result} Repo: <${repo_url}|${repository}> Workflow: <${repo_url}/actions/runs/${run_id} | ${workflow}> Author: ${actor} (${ref}>) (${sha}) ${message}"
+                "text": "${result} Workflow <${repo_url}/actions/runs/${run_id} | ${workflow}> in <${repo_url}|${repository}> (<${repo_url}/tree/${branch}|${branch}>) (<${repo_url}/commit/${ref}|${short}>)"
               }
             ]
           }
