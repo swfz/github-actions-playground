@@ -19,11 +19,15 @@ jobs:
       - run: ls -al
       - name: success
         if: success()
-        run: echo 'success'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run:
+          bash slack.sh ${{ github.workflow }} \
+                        ${{ github.actor }} \
+                        ${{ github.event_name }}
       - name: failure
         if: failure()
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          echo 'failure'
-          echo "${{ toJSON(job) }}"
+          bash slack.sh ${{ github.workflow }}
