@@ -55,7 +55,7 @@ curl -X POST -H 'Content-type: application/json' ${SLACK_WEBHOOK_URL} \
             "elements": [
               {
                 "type": "mrkdwn",
-                "text": "${result} Workflow <${repo_url}/actions/runs/${run_id} | ${workflow}> in <${repo_url}|${repository}> (<${repo_url}/tree/${branch}|${branch}>) (<${repo_url}/commit/${ref}|${short}>)"
+                "text": "${result} Workflow <${repo_url}/actions/runs/${run_id} | ${workflow}> in <${repo_url}|${repository}> (<${repo_url}/tree/${branch}|${branch}>) (<${repo_url}/commit/${sha}|${short}>)"
               }
             ]
           }
