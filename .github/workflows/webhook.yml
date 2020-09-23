@@ -31,7 +31,8 @@ jobs:
                         ${{ github.event.sender.avatar_url }} \
                         ${{ github.repository }} \
                         ${{ github.ref }} \
-                        ${{ github.sha }}
+                        ${{ github.sha }} \
+                        ${{ github.head_commit.message }}
 
       - name: failure
         if: failure()
@@ -47,4 +48,5 @@ jobs:
                         ${{ github.event.sender.avatar_url }} \
                         ${{ github.repository }} \
                         ${{ github.ref }} \
-                        ${{ github.sha }}
+                        ${{ github.sha }} \
+                        ${{ github.head_commit.message }}

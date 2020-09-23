@@ -21,6 +21,7 @@ avatar_url=$8
 repository=$9
 ref=${10}
 sha=${11}
+message=${12}
 
 echo '----------'
 echo $color
@@ -34,6 +35,7 @@ echo $avatar_url
 echo $repository
 echo $ref
 echo $sha
+echo $message
 echo '----------'
 
 curl -X POST -H 'Content-type: application/json' ${SLACK_WEBHOOK_URL} \
@@ -49,7 +51,7 @@ curl -X POST -H 'Content-type: application/json' ${SLACK_WEBHOOK_URL} \
             "elements": [
               {
                 "type": "mrkdwn",
-                "text": "Repo: <${repo_url}|${repository}> Workflow: <${repo_url}/actions/runs/${run_id} | ${workflow}> Author: ${actor} (${ref}>) (${sha})"
+                "text": "Repo: <${repo_url}|${repository}> Workflow: <${repo_url}/actions/runs/${run_id} | ${workflow}> Author: ${actor} (${ref}>) (${sha}) ${message}"
               }
             ]
           }
