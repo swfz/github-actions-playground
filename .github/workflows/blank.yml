@@ -82,3 +82,14 @@ jobs:
         run: echo ${{ github.head_ref }}
       - name: echo head_ref
         run: echo ${{ startsWith(github.head_ref, 'versionup/') }}
+
+  notify:
+    if: always()
+    needs: [fuga2, piyo, hoge, jq]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: technote-space/workflow-conclusion-action@v1
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: echo ${{ env.WORKFLOW_CONCLUSION }}
+
