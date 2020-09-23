@@ -45,7 +45,7 @@ curl -X POST -H 'Content-type: application/json' ${SLACK_WEBHOOK_URL} \
             "elements": [
               {
                 "type": "mrkdwn",
-                "text": "Workflow: <${repo_url}/actions/runs/${run_id} | ${workflow}>"
+                "text": "Workflow: <${repo_url}/actions/runs/${run_id}|${workflow}>"
               }
             ]
           }
