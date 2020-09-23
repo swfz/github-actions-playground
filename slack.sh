@@ -20,7 +20,7 @@ repo_url=$(echo $7 | sed 's/ //g')
 avatar_url=$8
 repository=$9
 ref=${10}
-sha=${11}
+sha=$(echo ${11} | sed 's/ //g')
 message=${12}
 result=${13}
 
