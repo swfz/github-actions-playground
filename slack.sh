@@ -19,8 +19,8 @@ run_id=$(echo $6 | sed 's/ //g')
 repo_url=$(echo $7 | sed 's/ //g')
 avatar_url=$8
 repository=$9
-ref=$10
-sha=$11
+ref=${10}
+sha=${11}
 
 echo '----------'
 echo $color
