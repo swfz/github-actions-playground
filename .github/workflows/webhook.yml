@@ -32,7 +32,8 @@ jobs:
                         ${{ github.repository }} \
                         ${{ github.ref }} \
                         ${{ github.sha }} \
-                        ${{ github.head_commit.message }}
+                        ${{ github.event.head_commit.message }} \
+                        'Success'
 
       - name: failure
         if: failure()
@@ -49,4 +50,5 @@ jobs:
                         ${{ github.repository }} \
                         ${{ github.ref }} \
                         ${{ github.sha }} \
-                        ${{ github.head_commit.message }}
+                        ${{ github.event.head_commit.message }} \
+                        'Failed'
