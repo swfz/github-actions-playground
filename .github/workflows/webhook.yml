@@ -10,10 +10,11 @@ jobs:
       - run: |
           echo $GITHUB_EVENT_PATH
           cat $GITHUB_EVENT_PATH
+          cp $GITHUB_EVENT_PATH event.json
       - uses: actions/upload-artifact@v1
         with:
           name: event.json
-          path: $GITHUB_EVENT_PATH
+          path: event.json
 
       - run: ls -al
       - name: success
