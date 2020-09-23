@@ -17,5 +17,6 @@ jobs:
         run: |
           echo 'failure'
           echo "${{ toJSON(job) }}"
+          echo "${{ toJSON(github) }}"
 
 
