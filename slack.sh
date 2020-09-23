@@ -16,7 +16,7 @@ actor=$3
 event_name=$4
 action=$5
 run_id=$(echo $6 | sed 's/ //g')
-repo_url=$7
+repo_url=$(echo $7 | sed 's/ //g')
 avatar_url=$8
 
 echo '----------'
