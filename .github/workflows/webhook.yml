@@ -8,12 +8,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2.3.2
       - run: echo "${{ toJSON(github) }}" > event.json
+      - run: |
+          cat $GITHUB_EVENT_PATH | jq '.workflow'
       - uses: actions/upload-artifact@v1
         with:
           name: event.json
           path: event.json
 
-      - run: ls hoge
       - run: ls -al
       - name: success
         if: success()
