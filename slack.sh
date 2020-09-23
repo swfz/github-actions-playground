@@ -59,7 +59,7 @@ curl -X POST -H 'Content-type: application/json' ${SLACK_WEBHOOK_URL} \
     "attachments": [
       {
         "color": "${color}",
-        "fallback": "Required plain-text summary of the attachment.",
+        "fallback": "${result} Workflow ${workflow} in ${repository}",
         "blocks": [
           {
             "type": "context",
