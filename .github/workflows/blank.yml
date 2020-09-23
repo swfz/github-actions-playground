@@ -90,6 +90,7 @@ jobs:
     steps:
       - uses: technote-space/workflow-conclusion-action@v1
       - run: echo ${{ env.WORKFLOW_CONCLUSION }}
+      - name: notify
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run:
