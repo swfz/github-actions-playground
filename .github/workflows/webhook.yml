@@ -14,9 +14,14 @@ jobs:
         run: echo 'success'
       - name: failure
         if: failure()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           echo 'failure'
           echo "${{ toJSON(job) }}"
-          echo "${{ toJSON(github) }}"
-
+          echo "${{ toJSON(github) }}" > event.json
+      - uses: actions/upload-artifact@v1
+        with:
+          name: event.json
+          path: event.json
 
