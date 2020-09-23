@@ -48,7 +48,7 @@ curl -X POST -H 'Content-type: application/json' ${SLACK_WEBHOOK_URL} \
               },
               {
                 "type": "mrkdwn",
-                "text": "Event: ${event_name} Workflow(<${repo_url}/actions/runs/${run_id}|$workflow>)"
+                "text": "Event: ${event_name} Workflow: <${repo_url}/actions/runs/${run_id}|${workflow}>"
               }
             ]
           }
