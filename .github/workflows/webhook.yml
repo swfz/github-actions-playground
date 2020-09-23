@@ -8,11 +8,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2.3.2
       - run: ls hoge
+      - run: ls -al
       - name: success
         if: success()
         run: echo 'success'
       - name: failure
         if: failure()
-        run: echo 'failure'
+        run: |
+          echo 'failure'
+          echo "${{ toJSON(job) }}"
 
 
