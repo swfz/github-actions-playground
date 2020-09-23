@@ -10,7 +10,7 @@
 # ref
 
 
-color=$1
+result=$1
 workflow=$2
 actor=$3
 event_name=$4
@@ -22,12 +22,11 @@ repository=$9
 ref=${10}
 sha=$(echo ${11} | sed 's/ //g')
 message=${12}
-result=${13}
 
 short=$(echo ${sha:0:7})
 branch=$(echo ${ref} | sed 's/refs\/heads\///g')
+
 echo '----------'
-echo $color
 echo $workflow
 echo $actor
 echo $event_name
@@ -41,6 +40,18 @@ echo $sha
 echo $message
 echo $result
 echo '----------'
+
+declare -A COLORS
+COLORS=(
+  ["failure"]="#A30100"
+  ["success"]="#2EB886"
+  ["netral"]="#DAA038"
+  ["cancelled"]="#A30100"
+  ["timed_out"]="#A30100"
+)
+
+
+color=${COLORS["${result}"]}
 
 curl -X POST -H 'Content-type: application/json' ${SLACK_WEBHOOK_URL} \
   -d @- <<EOS

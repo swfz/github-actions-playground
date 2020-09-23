@@ -92,4 +92,16 @@ jobs:
       - run: echo ${{ env.WORKFLOW_CONCLUSION }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
+        run:
+          bash slack.sh ${{ env.WORKFLOW_CONCLUSION }} \
+                        ${{ github.workflow }} \
+                        ${{ github.actor }} \
+                        ${{ github.event_name }} \
+                        ${{ github.action }} \
+                        ${{ github.run_id }} \
+                        ${{ github.event.repository.url }} \
+                        ${{ github.event.sender.avatar_url }} \
+                        ${{ github.repository }} \
+                        ${{ github.ref }} \
+                        ${{ github.sha }} \
+                        ${{ github.event.head_commit.message }}
