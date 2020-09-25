@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: sleep 5
-      - run: exit 1
+      - run: exit 0
 
   slack-notify:
     if: always()
