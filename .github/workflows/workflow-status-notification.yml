@@ -3,7 +3,7 @@ name: workflow result notification
 on: [push, workflow_dispatch]
 
 jobs:
-  job1:
+  job-a1:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -13,7 +13,7 @@ jobs:
     steps:
       - run: exit 0
 
-  job2:
+  job-a2:
     runs-on: ubuntu-latest
     needs: [job1]
     strategy:
@@ -23,10 +23,14 @@ jobs:
           - name: matrix-b
     steps:
       - run: exit 0
+  job-b:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1
 
   slack-notify:
     if: always()
-    needs: [job2]
+    needs: [job-a2, job-b]
     name: workflow notification to slack
     runs-on: ubuntu-latest
     steps:
