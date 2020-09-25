@@ -1,0 +1,37 @@
+name: workflow result notification
+
+on: [push, workflow_dispatch]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 0
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        role:
+          - name: matrix-a
+          - name: matrix-b
+  job2:
+    runs-on: ubuntu-latest
+    needs: [job1]
+    steps:
+      - run: exit 0
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        role:
+          - name: matrix-a
+          - name: matrix-b
+
+  slack-notify:
+    if: always()
+    needs: [job2]
+    name: workflow notification to slack
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Gamesight/slack-workflow-status@master
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
