@@ -8,4 +8,5 @@ jobs:
     steps:
       - name: install ansible-lint
         run: |
+          sudo apt-get install python3-setuptools
           python3 -m pip install ansible-lint
