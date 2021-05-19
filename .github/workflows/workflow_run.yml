@@ -14,6 +14,8 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
+
+
       - name: echo previous run_id
         id: get_run_id
         run: |
@@ -21,6 +23,11 @@ jobs:
           # echo "::set-output name=run_id::${run_id}"
           # echo ${run_id}
           echo "::set-output name=run_id::${{ github.run_id }}"
+
+      - name: echo run id
+        run: |
+          echo $GITHUB_RUN_ID
+          echo ${{ steps.get_run_id.outputs.run_id }}
 
       - uses: swfz/slack-workflow-status@feature/follow-workflow-run-event
         with:
