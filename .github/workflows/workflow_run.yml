@@ -15,14 +15,14 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
       - name: echo previous run_id
-        id: run_id
+        id: get_run_id
         run: |
           run_id=$(echo "${{ github.event.workflow_run.cancel_url }}" | sed -e 's/https.*runs\/\([0-9]*\)\/cancel/\1/g')
           echo "::set-output name=run_id::${run_id}"
           echo ${run_id}
 
-      # - uses: swfz/slack-workflow-status@feature/follow-workflow-run-event
-      #   with:
-      #     repo_token: ${{ secrets.GITHUB_TOKEN }}
-      #     slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
-      #     run_id: ${{ github.event.workflow_run.cancel_url }}
+      - uses: swfz/slack-workflow-status@feature/follow-workflow-run-event
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          run_id: ${{ steps.get_run_id.outputs.run_id }}
