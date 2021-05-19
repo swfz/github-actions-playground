@@ -17,7 +17,7 @@ jobs:
       - name: echo previous run_id
         id: get_run_id
         run: |
-          run_id=$(echo "${{ github.event.workflow_run.cancel_url }}" | sed -e 's/https.*runs\/\([0-9]*\)\/cancel/\1/g')
+          run_id=$(echo -n "${{ github.event.workflow_run.cancel_url }}" | sed -e 's/https.*runs\/\([0-9]*\)\/cancel/\1/g')
           echo "::set-output name=run_id::${run_id}"
           echo ${run_id}
 
