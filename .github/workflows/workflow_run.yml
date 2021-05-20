@@ -15,7 +15,6 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
 
-
       - name: echo previous run_id
         id: get_run_id
         run: |
