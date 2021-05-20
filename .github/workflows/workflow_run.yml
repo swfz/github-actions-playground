@@ -30,9 +30,14 @@ jobs:
           echo ${{ steps.get_run_id.outputs.run_id }}
 
       - uses: swfz/slack-workflow-status@feature/follow-workflow-run-event
+        id: slack
         env:
           ACTIONS_STEP_DEBUG: true
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
           run_id: ${{ steps.get_run_id.outputs.run_id }}
+
+      - name: debug
+        run: |
+          echo ${{ steps.slack.outputs.run_id }}
