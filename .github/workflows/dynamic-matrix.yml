@@ -1,0 +1,21 @@
+name: dynamic matrix
+
+on: [push]
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: make values
+        run: |
+          echo '["hoge","fuga"]' | jq -c
+          matrix=$(echo '["hoge","fuga"]' | jq -c)
+          echo "::set-output name=matrix::$matrix"
+  execute:
+    needs: matrix
+    strategy:
+      fail-fast: false
+      matrix:
+        values: ${{fromJson(needs.matrix.outputs.matrix)}}
+    steps:
+      - run: echo ${{ matrix.values.value }}
