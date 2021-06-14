@@ -10,7 +10,14 @@ jobs:
         run: |
           echo '["hoge","fuga"]' | jq -c
           matrix=$(echo '["hoge","fuga"]' | jq -c)
-          echo "::set-output name=matrix::$matrix"
+          echo "::set-output name=matrix::${matrix}"
+
+  debug:
+    needs: matrix
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${{ matrix.values.value }}
   execute:
     needs: matrix
     runs-on: ubuntu-latest
