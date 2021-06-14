@@ -13,6 +13,7 @@ jobs:
           echo "::set-output name=matrix::$matrix"
   execute:
     needs: matrix
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
