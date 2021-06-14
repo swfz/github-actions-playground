@@ -27,6 +27,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        values: ${{fromJson(needs.matrix.outputs.matrix)}}
+        value: ${{fromJson(needs.matrix.outputs.matrix)}}
     steps:
-      - run: echo ${{ matrix.values.value }}
+      - run: echo ${{ matrix.value }}
