@@ -3,30 +3,24 @@ name: dynamic matrix
 on: [push]
 
 jobs:
-  matrix:
+  set-matrix:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      something: ${{ steps.set-matrix.outputs.value }}
     steps:
       - name: make values
         id: set-matrix
         run: |
           echo '["hoge","fuga"]' | jq -c
-          matrix=$(echo '["hoge","fuga"]' | jq -c)
-          echo "::set-output name=matrix::${matrix}"
+          list=$(echo '["hoge","fuga"]' | jq -c)
+          echo "::set-output name=value::${list}"
 
-  debug:
-    needs: matrix
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo ${{ matrix.values.value }}
   execute:
-    needs: matrix
+    needs: set-matrix
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        value: ${{fromJson(needs.matrix.outputs.matrix)}}
+        hoge: ${{fromJson(needs.set-matrix.outputs.something)}}
     steps:
-      - run: echo ${{ matrix.value }}
+      - run: echo ${{ matrix.hoge }}
