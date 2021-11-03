@@ -10,7 +10,7 @@ jobs:
       output1: ${{ steps.step1.outputs.test }}
       output2: ${{ steps.step2.outputs.test }}
     steps:
-      - uses: actions/checkout@v2.3.2
+      - uses: actions/checkout@v2.4.0
       - id: step1
         run: echo "::set-output name=test::hello"
       - id: step2
