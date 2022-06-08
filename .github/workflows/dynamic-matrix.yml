@@ -1,13 +1,28 @@
 name: dynamic matrix
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
+  set-matrix-with-script:
+    runs-on: ubuntu-latest
+    outputs:
+      tags: ${{ steps.set-matrix.outputs.result }}
+    steps:
+      - name: make values
+        id: set-matrix
+      - uses: actions/github-script@v3
+        with:
+          script: |
+            const eventName = context.payload.event.name;
+            const tags = ['a','b'];
+            return (eventName === 'workflow_dispatch' || eventName === 'schedule') ? [...tags, 'all'] : tags;
+
   set-matrix:
     runs-on: ubuntu-latest
     outputs:
       something: ${{ steps.set-matrix.outputs.value }}
-    steps:
       - name: make values
         id: set-matrix
         run: |
@@ -22,5 +37,15 @@ jobs:
       fail-fast: false
       matrix:
         hoge: ${{fromJson(needs.set-matrix.outputs.something)}}
+    steps:
+      - run: echo ${{ matrix.hoge }}
+
+  execute:
+    needs: set-matrix-with-script
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        hoge: ${{fromJson(needs.set-matrix-with-script.outputs.tags)}}
     steps:
       - run: echo ${{ matrix.hoge }}
