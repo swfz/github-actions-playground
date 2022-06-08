@@ -14,7 +14,7 @@ jobs:
         id: set-matrix
         with:
           script: |
-            const eventName = context.payload.event.name;
+            const eventName = context.payload.event;
             const tags = ['a','b'];
             return (eventName === 'workflow_dispatch' || eventName === 'schedule') ? [...tags, 'all'] : tags;
 
