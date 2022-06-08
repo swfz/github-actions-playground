@@ -14,10 +14,11 @@ jobs:
         id: set-matrix
         with:
           script: |
-            const eventName = context.payload.event;
+            const eventName = context.eventName;
             const tags = ['a','b'];
             core.info(JSON.stringify(context), null, '  ');
             core.info(JSON.stringify(github), null, '  ')
+            console.log(eventName);
             return (eventName === 'workflow_dispatch' || eventName === 'schedule') ? [...tags, 'all'] : tags;
 
   set-matrix:
