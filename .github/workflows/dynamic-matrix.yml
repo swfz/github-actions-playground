@@ -31,7 +31,7 @@ jobs:
           list=$(echo '["hoge","fuga"]' | jq -c)
           echo "::set-output name=value::${list}"
 
-  execute:
+  execute1:
     needs: set-matrix
     runs-on: ubuntu-latest
     strategy:
@@ -41,7 +41,7 @@ jobs:
     steps:
       - run: echo ${{ matrix.hoge }}
 
-  execute:
+  execute2:
     needs: set-matrix-with-script
     runs-on: ubuntu-latest
     strategy:
