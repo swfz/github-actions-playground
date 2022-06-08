@@ -10,9 +10,8 @@ jobs:
     outputs:
       tags: ${{ steps.set-matrix.outputs.result }}
     steps:
-      - name: make values
-        id: set-matrix
       - uses: actions/github-script@v3
+        id: set-matrix
         with:
           script: |
             const eventName = context.payload.event.name;
