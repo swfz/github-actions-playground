@@ -16,7 +16,7 @@ jobs:
           script: |
             const eventName = context.payload.event;
             const tags = ['a','b'];
-            console.log(eventName);
+            core.info(JSON.stringify(context.payload))
             return (eventName === 'workflow_dispatch' || eventName === 'schedule') ? [...tags, 'all'] : tags;
 
   set-matrix:
