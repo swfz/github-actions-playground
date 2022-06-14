@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  set-matrix-with-script:
+  set-matrix:
     runs-on: ubuntu-latest
     outputs:
       tags: ${{ steps.set-matrix.outputs.result }}
@@ -21,34 +21,12 @@ jobs:
             console.log(eventName);
             return (eventName === 'workflow_dispatch' || eventName === 'schedule') ? [...tags, 'all'] : tags;
 
-  set-matrix:
-    runs-on: ubuntu-latest
-    outputs:
-      something: ${{ steps.set-matrix.outputs.value }}
-    steps:
-      - name: make values
-        id: set-matrix
-        run: |
-          echo '["hoge","fuga"]' | jq -c
-          list=$(echo '["hoge","fuga"]' | jq -c)
-          echo "::set-output name=value::${list}"
-
-  execute1:
+  execute:
     needs: set-matrix
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        hoge: ${{fromJson(needs.set-matrix.outputs.something)}}
-    steps:
-      - run: echo ${{ matrix.hoge }}
-
-  execute2:
-    needs: set-matrix-with-script
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        hoge: ${{fromJson(needs.set-matrix-with-script.outputs.tags)}}
+        hoge: ${{fromJson(needs.set-matrix.outputs.tags)}}
     steps:
       - run: echo ${{ matrix.hoge }}
