@@ -42,6 +42,7 @@ jobs:
         run: echo Hello, world! hoge
       - run: cat $GITHUB_EVENT_PATH
       - run: ls -al
+      - run: ${{ github.head_ref }}
 
   fuga:
     runs-on: ubuntu-latest
