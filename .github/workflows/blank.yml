@@ -22,7 +22,7 @@ jobs:
           - name: fuga
             repo: 'fu/ga'
     steps:
-      - uses: actions/checkout@v3.2.0
+      - uses: actions/checkout@v3.4.0
       - name: Run a one-line script
         run: echo Hello, world! build ${{ matrix.role.name }}
       - name: touch
@@ -33,9 +33,9 @@ jobs:
   hoge:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.2.0
+      - uses: actions/checkout@v3.4.0
       - if: github.event.client_payload
-        uses: actions/checkout@v3.2.0
+        uses: actions/checkout@v3.4.0
         with:
           ref: ${{ github.event.client_payload.ref }}
 
@@ -47,7 +47,7 @@ jobs:
   fuga:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.2.0
+      - uses: actions/checkout@v3.4.0
       - id: echo
         name: run shell
         run: |
@@ -70,7 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: fuga
     steps:
-      - uses: actions/checkout@v3.2.0
+      - uses: actions/checkout@v3.4.0
       - name: echo steps
         run: echo ${{ toJSON(steps) }}
 
@@ -78,7 +78,7 @@ jobs:
     if: "github.event_name != 'pull_request' || !startsWith(github.head_ref, 'versionup')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.2.0
+      - uses: actions/checkout@v3.4.0
       - name: echo head_ref
         run: echo ${{ github.head_ref }}
       - name: echo head_ref
