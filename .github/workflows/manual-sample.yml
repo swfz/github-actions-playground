@@ -17,6 +17,9 @@ jobs:
     - run: |
         echo "Hello ${{ github.event.inputs.name }}!"
         echo "- in ${{ github.event.inputs.home }}!"
+
+    - run: |
+        date +"%Z %z"
     - uses: actions/setup-node@v4
       with:
         node-version: '20'
