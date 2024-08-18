@@ -18,9 +18,10 @@ jobs:
         echo "Hello ${{ github.event.inputs.name }}!"
         echo "- in ${{ github.event.inputs.home }}!"
     - uses: actions/setup-node@v4
-      node-version: '20'
+      with:
+        node-version: '20'
 
     - run: |
-      node -e 'console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)'
+        node -e 'console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)'
 
 
