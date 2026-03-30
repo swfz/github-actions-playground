@@ -29,7 +29,7 @@ jobs:
           echo $GITHUB_RUN_ID
           echo ${{ steps.get_run_id.outputs.run_id }}
 
-      - uses: swfz/slack-workflow-status@feature/follow-workflow-run-event
+      - uses: swfz/slack-workflow-status@v1.4.0
         id: slack
         env:
           ACTIONS_STEP_DEBUG: true
