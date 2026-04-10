@@ -1,18 +1,22 @@
 {
-  "extends": [
-    "config:base"
-  ],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "minimumReleaseAge": "7 days",
+  "internalChecksFilter": "strict",
+  "osvVulnerabilityAlerts": true,
   "labels": ["renovate"],
   "github-actions": {
-    "fileMatch": [".github/workflows/blank.yml",".github/workflows/takeover-output.yml"]
+    "fileMatch": [".github/workflows/blank.yml", ".github/workflows/takeover-output.yml"]
   },
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "fileMatch": ["sample.yml"],
       "matchStrings": ["version: (?<depName>.*?)@(?<currentValue>.*?)\n"],
       "datasourceTemplate": "github-tags"
     },
     {
+      "customType": "regex",
       "fileMatch": ["versions.yml"],
       "matchStrings": [
         "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\n.*?_version: (?<currentValue>.*)\n"
@@ -20,14 +24,15 @@
       "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
     },
     {
-      "fileMatch": [".github/workflows/blank.yml",".github/workflows/takeover-output.yml"],
+      "customType": "regex",
+      "fileMatch": [".github/workflows/blank.yml", ".github/workflows/takeover-output.yml"],
       "matchStrings": ["uses: (?<depName>.*?)@(?<currentValue>.*?)\n"],
       "datasourceTemplate": "github-releases"
     }
   ],
   "packageRules": [
     {
-      "packageNames": ["actions/checkout"],
+      "matchPackageNames": ["actions/checkout"],
       "versioning": "regex:^v(?<major>\\d+)(\\.(?<minor>\\d+))?(\\.(?<patch>\\d+))?"
     }
   ]
